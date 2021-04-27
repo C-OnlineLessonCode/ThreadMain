@@ -1,0 +1,32 @@
+#include <iostream>
+#include <windows.h>
+
+DWORD WINAPI ThreadMain(LPVOID lpThreadParameter) {
+    return 100500;
+}
+
+void func1(int a) {
+    int x = 10;
+    std::cout << a;
+}
+void func2(int a) {
+    int x = 10;
+    std::cout << x;
+}
+int main()
+{
+    func2(30);
+    func1(10);
+    DWORD threadId = 0; // TID
+    HANDLE thread = CreateThread(
+        0,
+        0,
+        ThreadMain,
+        0,
+        0,
+        &threadId
+    );
+    int i = 0;
+    std::cin >> i;
+    CloseHandle(thread);
+}
